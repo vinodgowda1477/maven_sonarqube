@@ -12,8 +12,8 @@ pipeline {
    stage('Build & run SonarQube analysis') {
    steps { 
 	script {   
-  def scannerHome = tool 'elotl_scanner';
-  withSonarQubeEnv('elotl') {
+  def scannerHome = tool 'sonar-scanner';
+  withSonarQubeEnv('sonarserver') {
     sh "mvn clean verify"
       }
     }
