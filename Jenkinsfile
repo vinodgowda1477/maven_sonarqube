@@ -6,13 +6,21 @@ pipeline {
         git 'https://github.com/vinodgowda1477/maven_sonarqube.git'
       }
     }
-    
-   stage('Build & run SonarQube analysis') {
+
+  stage('Build project') {
+   steps {
+	script {
+    sh "mvn clean verify"
+      }
+    }
+  }
+
+   stage('Run SonarQube analysis') {
    steps { 
 	script {   
   def scannerHome = tool 'sonar-scanner';
   withSonarQubeEnv('sonar-scanner') {
-    sh "mvn clean verify sonar:sonar"
+    sh "${scannerHome}/bin/sonar-scanner"
       }
     }
   }
