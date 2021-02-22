@@ -1,6 +1,4 @@
 pipeline {
-  environment {
-  }
   agent any
   stages {
     stage('Cloning Git') {
@@ -33,6 +31,7 @@ pipeline {
      }
   }
 }
+}
   post {  
          success {  
              mail bcc: '', body: "<b>Pipeline completed successfully</b><br> Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "PIPELINE SUCCESSFUL-> CI: ${env.JOB_NAME} BUILD: ${env.BUILD_NUMBER}", to: "vinod.r@analyttica.com";
@@ -42,4 +41,3 @@ pipeline {
          }  
      }  
 }
-
