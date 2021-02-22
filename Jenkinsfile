@@ -11,8 +11,8 @@ pipeline {
    steps { 
 	script {   
   def scannerHome = tool 'sonar-scanner';
-  withSonarQubeEnv('sonarserver') {
-    sh "mvn clean verify"
+  withSonarQubeEnv('sonar-scanner') {
+    sh "mvn clean verify sonar:sonar"
       }
     }
   }
